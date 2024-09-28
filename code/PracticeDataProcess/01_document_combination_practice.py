@@ -18,5 +18,3 @@ print(missing_values)
 #drop records with missing Title and Review
 df_total.dropna(subset=['Title', 'Review'], how='any', inplace=True)
 
-
-
