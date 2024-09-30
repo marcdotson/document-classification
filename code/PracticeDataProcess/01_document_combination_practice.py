@@ -2,8 +2,9 @@ import pandas as pd
 
 #read each excel sheet into individuals data frames
 
-df1 = pd.read_excel("Roomba Reviews.xlsx", sheet_name = 'iRobot Roomba 650')
-df2 = pd.read_excel("Roomba Reviews.xlsx", sheet_name = 'iRobot Roomba 880')
+df1 = pd.read_excel(r"C:\Users\ksbuf\OneDrive\Desktop\Invista PRoject\document-classification\data\Roomba Reviews.xlsx", sheet_name = 'iRobot Roomba 650')
+df2 = pd.read_excel(r"C:\Users\ksbuf\OneDrive\Desktop\Invista PRoject\document-classification\data\Roomba Reviews.xlsx", sheet_name = 'iRobot Roomba 880')
+
 
 #add columns to distinguish which record is from which group ##### DONT NEED THIS FOR PRACTICE DATA
 df1['Group'] = 'Group 1'
@@ -16,5 +17,7 @@ missing_values = df_total.isnull().sum()
 print(missing_values)
 
 #drop records with missing Title and Review
-df_total.dropna(subset=['Title', 'Review'], how='any', inplace=True)
+# df_total.dropna(subset=['Title', 'Review'], how='any', inplace=True)
 
+# Export the DataFrame to an Excel file
+df_total.to_excel(r"C:\Users\ksbuf\OneDrive\Desktop\Invista PRoject\document-classification\data\combined_data_roomba.xlsx", index=False)
