@@ -87,20 +87,24 @@ def clean_text_dataframe(df, drop_columns=None, text_columns=None):
     return df_cleaned
 
 
-#________________________Example Usage__________________________
-#if more than one add extra columns seperated by a comma
+#_____________________________Example Usage_______________________________
 
+#if more than one add extra columns seperated by a comma
 drop_columns = ['Col_name']
 
+#read in our dataframe that has been concat. to clean
 df_combined = pd.read_excel(r'insert-file-path-here')
+
 #=if more than one text column needs to be cleaned enter all seperated by commas
 text_columns = ['text_col_name']
 
+#create our clean df from the params above
 df_cleaned = clean_text_dataframe(df_combined, drop_columns=drop_columns, text_columns=text_columns)
 
 '''
 Once text has been cleaned, move on to basic text statistics to determine if you should be returning to 
-clean text more or filter out more stop words.
+clean text more or filter out more stop words. One important thing to note is that 
+
 '''
 
 #Uncomment this code if you would like to export your data as a cleaned file
