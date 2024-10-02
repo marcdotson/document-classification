@@ -4,10 +4,10 @@ import pandas as pd
 # Reading the Excel file into a DataFrame
 df_cleaned = pd.read_excel(r'READ_CLEAN_FILE_PATH.XLSX')
 
-# Creating a dataframe that we will test the model onto that has null values
+#Creating a dataframe that will be used to test our model, IV's are null
 df_test_data = df_cleaned[df_cleaned['Independent_var_col'].isna()]
 
-# Creating DataFrame for training data where 'Received Five Stars' is not NaN
+# Creating DataFrame for training data where IV's is not NaN
 df_training_data = df_cleaned[df_cleaned['Independent_var_col'].notna()]
 
 # Getting the shapes of both DataFrames
