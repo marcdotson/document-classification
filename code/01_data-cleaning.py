@@ -6,14 +6,13 @@ import pandas as pd                              #data frames
 import numpy as np                               #arrays
 import contractions                              #expanding contractions (e.g., can't -> cannot)
 import spacy                                     #advanced NLP tasks
-from nltk.tokenize.toktok import ToktokTokenizer #tokenizer
-from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize, sent_tokenize
-from collections import Counter
+from nltk.corpus import stopwords                #stopwords          
+from nltk.tokenize import word_tokenize          #bag-of-words tokenizer
+from collections import Counter                  #counting tokens
 
 #download necessary NLTK resources
 nltk.download('stopwords')
-nltk.download('punkt')
+nltk.download('punkt_tab')
 
 #load stop words
 stop_words = set(stopwords.words('english'))
@@ -23,9 +22,6 @@ stop_words = set(stopwords.words('english'))
 
 #load Spacy language model
 nlp = spacy.load('en_core_web_sm')
-
-#initialize Toktok tokenizer
-tokenizer = ToktokTokenizer()
 
 #read each excel sheet into individuals data frames
 df1 = pd.read_excel('data/roomba-reviews.xlsx', sheet_name = 'iRobot Roomba 650')
@@ -55,13 +51,16 @@ df_combined['Review'] = df_combined['Review'].apply(lambda x: x.translate(str.ma
 #remove extra spaces from the 'Review' column
 df_combined['Review'] = df_combined[['Review']].apply(lambda x: x.str.split().str.join(' '))
 
-#aply the stop word removal to the 'Review' column without a function
+#apply the stop word removal to the 'Review' column without a function
 df_combined['Review'] = df_combined['Review'].apply(
     lambda x: ' '.join([word for word in word_tokenize(x) if word.lower() not in stop_words]))
 
 
-
-
+#########################
+# I'm getting really confused by the separate scripts for practice and general.
+# Can we just include everything in one specific script? I've modifieid some of the
+# issues with the practice dataset so that it behaves more like the real script.
+#########################
 
 
 #create a function to lemmatize the text if needed
