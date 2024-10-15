@@ -2,10 +2,8 @@
 import pandas as pd
 
 #read each excel sheet into individuals data frames
-
-df1 = pd.read_excel(r"C:\Users\ksbuf\OneDrive\Desktop\Invista PRoject\document-classification\data\Roomba Reviews.xlsx", sheet_name = 'iRobot Roomba 650')
-df2 = pd.read_excel(r"C:\Users\ksbuf\OneDrive\Desktop\Invista PRoject\document-classification\data\Roomba Reviews.xlsx", sheet_name = 'iRobot Roomba 880')
-
+df1 = pd.read_excel('data/Roomba Reviews.xlsx', sheet_name = 'iRobot Roomba 650')
+df2 = pd.read_excel('data/Roomba Reviews.xlsx', sheet_name = 'iRobot Roomba 880')
 
 #add columns to distinguish which record is from which group ##### DONT NEED THIS FOR PRACTICE DATA
 df1['Group'] = 'Group 1'
