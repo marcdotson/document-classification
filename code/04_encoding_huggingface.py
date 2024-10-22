@@ -40,6 +40,9 @@ print(similarities)
 
 #Sources:
 #Huggingface Model: https://huggingface.co/Oillim/MiniLM-L6-v2?library=sentence-transformers
-#Possible other models: https://huggingface.co/fibery/clustering-v2.0
+#Possible other models: 
+# https://huggingface.co/fibery/clustering-v2.0
+# https://huggingface.co/Saideepthi55/sentencetransformer_all_minilm_l12_v2_on_chemical_dataset
+
 
 
