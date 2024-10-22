@@ -10,11 +10,19 @@ cleaned_df = pd.read_excel(file)
 print(cleaned_df.head())
 
 #Function to create bootstrap samples
-def create_bootstrap_samples(cleaned_df, n_samples=100, sample_size=1000):
+def create_bootstrap_samples(cleaned_df, target_col, n_samples=100, sample_size=1000):
     bootstrap_samples = []
+
+    #finding weights to make a balanced data set
+    class_counts = cleaned_df[target_col].value_counts()
+    total_count = len(cleaned_df)
+    class_weights = { cls: total_count / (len(class_counts) * count) for cls, count in class_counts.items()}
+
+    weights = cleaned_df[target_col].map(class_weights)
+
     for _ in range(n_samples):
         # Create a bootstrap sample by sampling with replacement
-        bootstrap_sample = cleaned_df.sample(n=sample_size, replace=True, random_state=np.random.randint(0, 10000))
+        bootstrap_sample = cleaned_df.sample(n=sample_size, replace=True, weights = weights, random_state=np.random.randint(0, 10000))
         bootstrap_samples.append(bootstrap_sample)
     return bootstrap_samples
 
