@@ -4,19 +4,23 @@
 
 import pandas as pd
 from sentence_transformers import SentenceTransformer
+from sklearn.metrics.pairwise import cosine_similarity
 
-#read in cleaned dataframe, everything needs to be in one column
-df = pd.read_excel('your file here')
+#read in cleaned/ labeled dataframe, everything needs to be in one column
+df_labeled = pd.read_excel('your file here')
 
 #bring in model from HuggingFace
 model = SentenceTransformer("Oillim/MiniLM-L6-v2")
 
 #encode model
-embeddings = model.encode(df)
+embeddings = model.encode(df_labeled['text_column'])
 
+#Add the embeddings to our labeled dataframe as a new column
+
+df_labeled['Embeddings'] = list(embeddings)
 
 #find similarities and print similarity matrix
-similarities = model.similarity(embeddings, embeddings)
+similarities = cosine_similarity(embeddings, embeddings)
 print(similarities.shape)
 print(similarities)
 
