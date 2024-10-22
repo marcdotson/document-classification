@@ -42,37 +42,37 @@ df2['Group'] = 'Group 2'
 df_combined = pd.concat([df1,df2], ignore_index = True)
 
 #change any column names BELOW IS STRICTLY AN EXAMPLE USAGE IF NEEDED.  UNCOMMENT IF NEEDED
-'''
-df_combined['Received Five Stars'] = df_combined['Rating']
-df_combined = df_combined.drop('Rating', axis = 1)
-df_combined['Received Five Stars'] = df_combined['Received Five Stars'].replace({'Five Stars': 1, 'Not Five Stars': 0})
-'''
+
+# df_combined['Received Five Stars'] = df_combined['Rating']
+# df_combined = df_combined.drop('Rating', axis = 1)
+# df_combined['Received Five Stars'] = df_combined['Received Five Stars'].replace({'Five Stars': 1, 'Not Five Stars': 0})
+
 
 #______________________________________ DATA CLEANING FUCNTION _______________________________________
 
 
 def clean_text_dataframe(df, drop_columns=None, text_columns=None):
 
-    """
-    ***** IF THERE ARE ANY OF THESE STEPS YOU DO NOT WANT TO PERFORM SIMPLY COMMENT THEM OUT*****
+   
+    # ***** IF THERE ARE ANY OF THESE STEPS YOU DO NOT WANT TO PERFORM SIMPLY COMMENT THEM OUT*****
 
-    Cleans a DataFrame by performing the following operations:
-    1. Drops specified columns.
-    2. Converts text in specified columns to lowercase and strips whitespace.
-    3. Expands contractions.
-    4. Removes punctuation from the text.
-    5. Removes stop words from text.
-    6. Removes any numbers from text.
-    7. Lemmatizes the words in the text.
+    # Cleans a DataFrame by performing the following operations:
+    # 1. Drops specified columns.
+    # 2. Converts text in specified columns to lowercase and strips whitespace.
+    # 3. Expands contractions.
+    # 4. Removes punctuation from the text.
+    # 5. Removes stop words from text.
+    # 6. Removes any numbers from text.
+    # 7. Lemmatizes the words in the text.
 
-    Parameters:
-    df (pd.DataFrame): The input DataFrame to clean.
-    drop_columns (list): List of columns to drop.
-    text_columns (list): List of columns containing text to clean.
+    # Parameters:
+    # df (pd.DataFrame): The input DataFrame to clean.
+    # drop_columns (list): List of columns to drop.
+    # text_columns (list): List of columns containing text to clean.
 
-    Returns:
-    pd.DataFrame: Cleaned DataFrame.
-    """
+    # Returns:
+    # pd.DataFrame: Cleaned DataFrame.
+   
     # Drop specified columns
     if drop_columns:
         df_cleaned = df.drop(drop_columns, axis=1)
@@ -121,11 +121,10 @@ text_columns = ['text_col_name']
 df_cleaned = clean_text_dataframe(df_combined, drop_columns=drop_columns, text_columns=text_columns)
 
 
-'''
-Once text has been cleaned, move on to basic text statistics to determine if you should be returning to 
-clean text more or filter out more stop words. One important thing to note is that 
 
-'''
+# Once text has been cleaned, move on to basic text statistics to determine if you should be returning to 
+# clean text more or filter out more stop words. One important thing to note is that 
+
 #__________________________________ IF NEEDED, BASIC TEXT STATISTICS _________________________________
 
 # Function to calculate word frequency

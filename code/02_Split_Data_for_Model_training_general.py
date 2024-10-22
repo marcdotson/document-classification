@@ -19,8 +19,8 @@ print(f'Data with null IV values to test model on shape{test_data_shape}')
 
 #------------------------------------------------------------------------------------------------
 #UNCOMMENT THE CODE BELOW IF YOU WANT TO SPILT IT INTO SEPERATE EXCEL FILES 
-'''
-df_test_data.to_excel(r"New_test_data_path", index=False)
-df_training_data.to_excel(r"New_training_data_path", index=False)
 
-'''
+# df_test_data.to_excel(r"New_test_data_path", index=False)
+# df_training_data.to_excel(r"New_training_data_path", index=False)
+
+
