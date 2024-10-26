@@ -23,11 +23,13 @@ y_prob = best_model.predict_proba(X_test)[:, 1]  # Use [:, 1] for the positive c
 print("\nClassification Report Default threshold 50%:")
 print(classification_report(y_test, y_pred_default))
 
-# Custom threshold of 70%
-y_pred_70 = (y_prob >= 0.7).astype(int)  # Using 0.7 as threshold
+# Custom threshold, specify what you want it to be
+custom_threshold = .8
+y_pred_custom = (y_prob >= custom_threshold ).astype(int) 
 
-print("\nClassification Report Custom threshold 70%:")
-print(classification_report(y_test, y_pred_70))
+#custom threshold classification report
+print(f"\nClassification Report Custom threshold ({custom_threshold *100}%):")
+print(classification_report(y_test, y_pred_custom))
 
 # Calculate ROC AUC score and accuracy for default threshold
 roc_auc = roc_auc_score(y_test, y_prob)
@@ -36,14 +38,14 @@ accuracy_default = accuracy_score(y_test, y_pred_default)
 print(f'\nAccuracy with default threshold (50%): {accuracy_default * 100:.2f}%')
 print(f'ROC AUC Score: {roc_auc:.2f}')
 
-# Calculate accuracy for custom threshold of 70%
-accuracy_70 = accuracy_score(y_test, y_pred_70)
-print(f'Accuracy with custom threshold (70%): {accuracy_70 * 100:.2f}%')
+# Calculate accuracy for custom threshold%
+accuracy_cust = accuracy_score(y_test, y_pred_custom)
+print(f'Accuracy with custom threshold ({custom_threshold *100}%): {accuracy_cust * 100:.2f}%')
 
 # Compute confusion matrix for default threshold
 cm_default = confusion_matrix(y_test, y_pred_default)
 # Compute confusion matrix for custom threshold
-cm_70 = confusion_matrix(y_test, y_pred_70)
+cm_custom = confusion_matrix(y_test, y_pred_custom)
 
 # Plot the heatmap to visualize our Confusion Matrix for the default threshold
 plt.figure(figsize=(10, 7))
@@ -55,9 +57,9 @@ plt.show()
 
 # Plot the heatmap to visualize our Confusion Matrix for the custom threshold
 plt.figure(figsize=(10, 7))
-sns.heatmap(cm_70, annot=True, fmt="d", cmap="Oranges", xticklabels=labels, yticklabels=labels)
+sns.heatmap(cm_custom, annot=True, fmt="d", cmap="Oranges", xticklabels=labels, yticklabels=labels)
 plt.xlabel('Predicted')
 plt.ylabel('True')
-plt.title('Confusion Matrix - Custom Threshold (70%)')
+plt.title(f'Confusion Matrix - Custom Threshold ({custom_threshold *100}%)')
 plt.show()
 
