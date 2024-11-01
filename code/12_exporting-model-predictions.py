@@ -38,9 +38,9 @@ except FileNotFoundError:
 #-----------------------------------------------------------------------------------------------
 
 # Define the model name, predictions, and probabilities for the new model
-model_name = "ADD NAME OF MODEL HERE, LIKE LOG_REG_EMBED"
-predicted_labels = ['Label_A', 'Label_B', 'Label_A']  # Replace with actual predictions for each document
-prediction_probabilities = [0.85, 0.65, 0.90]  # Replace with actual prediction probabilities for each document
+model_name = "Model 1 or whatever corresponds to model performance sheet"
+predicted_labels = predicted_labels
+prediction_probabilities = y_unlabled_prob
 
 # Add columns for the model's predicted labels and probabilities
 performance_df[f"{model_name}_Label"] = predicted_labels

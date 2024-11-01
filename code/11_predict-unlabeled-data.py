@@ -18,6 +18,10 @@ unlabeld_text_emb = df_unlabeled['Embeddings']
 
 #create our predicted outcomes and add them onto our test data be sure to specify if it is vectors or embeddings
 predicted_labels = grid_search.predict('text_vec OR text_emb') #this can be our model from the grid search or best performing model, specify which you want to use
+
+#Get our all of our predictions probabilties to store to be used in spot checking performance later
+y_unlabeled_prob = grid_search.predict_proba('unlabeld_text_vec OR unlabeld_text_emb')[:, 1]
+
 for text, label in zip(df_unlabeled['REnter text column here'], predicted_labels):
     df_unlabeled['predicted_label'] = predicted_labels
 
