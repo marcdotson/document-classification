@@ -5,6 +5,7 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_extraction.text import CountVectorizer
+from sentence_transformers import SentenceTransformer
 
 
 #_______________________________________________________________________________________________
@@ -86,10 +87,27 @@ print(pd.Series(y_train).value_counts())
 
 print("\nValue counts for y_test:")
 print(pd.Series(y_test).value_counts())
+
+
 #_______________________________________________________________________________________________
 #BELOW IS THE CODE TO USE WORD EMBEDDINGS AS THE INPUT INTO THE MODEL
 #_______________________________________________________________________________________________
  
+#bring in model from HuggingFace
+model = SentenceTransformer("Oillim/MiniLM-L6-v2")
+
+#encode model
+embeddings = model.encode(df_cleaned['text_column'])
+
+#Add the embeddings to our cleaned dataframe as a new column
+df_cleaned['Embeddings'] = list(embeddings)
+
+#Export the dataframe with the embeddings so this does not have to be run everytime, Once data is exported comment this code out
+df_cleaned.to_excel("INSERT NEW EMBEDDING FILE PATH HERE.XLSX", index = False)
+
+#make a new copy of our df_cleaned in order to transfer over the new embeddings column
+df_labeled = df_cleaned.copy()
+
 # Split labeled data into embeddings and labels
 embeddings = df_labeled['Embeddings'].tolist()  # Ensure this is a list/array
 labels = df_labeled['Target_Var'].tolist()
