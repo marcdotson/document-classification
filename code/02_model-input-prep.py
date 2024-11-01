@@ -94,7 +94,7 @@ print(pd.Series(y_test).value_counts())
 #_______________________________________________________________________________________________
  
 #bring in model from HuggingFace
-model = SentenceTransformer("Oillim/MiniLM-L6-v2")
+model = SentenceTransformer("ENTER THE HUGGING FACE EMBEDDINGS MODEL YOU NEED HERE")
 
 #encode model
 embeddings = model.encode(df_cleaned['text_column'])
