@@ -20,11 +20,11 @@ y_pred_default = best_model.predict(X_test)
 print("Model class order:", best_model.classes_)
 
 # Get predicted probabilities for the positive class
-y_prob = best_model.predict_proba(X_test)[:, 1]  # Use [:, 1] for the positive class
+y_prob_test = best_model.predict_proba(X_test)[:, 1]  # Use [:, 1] for the positive class
 
 # Evaluate for each threshold
 for threshold in thresholds:
-    y_pred_custom = (y_prob >= threshold).astype(int)
+    y_pred_custom = (y_prob_test >= threshold).astype(int)
     
     # Classification report for the current threshold
     print(f"\nClassification Report for threshold {threshold * 100:.0f}%:")
