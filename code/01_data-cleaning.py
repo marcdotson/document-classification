@@ -92,8 +92,8 @@ def clean_text_dataframe(df, drop_columns=None, text_columns=None):
                 # Remove punctuation
                 df_cleaned[col] = df_cleaned[col].str.translate(str.maketrans('', '', string.punctuation))
                 
-                # Remove digits of any length
-                df_cleaned[col] = df_cleaned[col].apply(lambda text: re.sub(r'\d+', '', text) if isinstance(text, str) else text)
+                # Remove any non engish characters
+                df_cleaned[col] = df_cleaned[col].apply(lambda text: re.sub(r'[^a-zA-Z\s]', '', text) if isinstance(text, str) else text)
 
                 # Remove stop words
                 stop_words = set(stopwords.words('english'))  # Set of English stop words
@@ -148,4 +148,8 @@ for word in top_words:
 
 
 #Uncomment this code if you would like to export your data as a cleaned file
+#EXPORT AS MANY VERSIONS AS NEEEDED 
+        #Cleaned with the use of stop words and lemmatization
+        #Cleaned without stop words / lemmatization ect.
+
 # df_cleaned.to_excel(r"new_file_path_here", index=False)
