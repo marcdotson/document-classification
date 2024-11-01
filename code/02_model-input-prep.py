@@ -20,10 +20,14 @@ df_unlabeled = df_cleaned[df_cleaned['Independent_var_col'].isna()]
 # Creating DataFrame for all of our labeled data to train the model
 df_labeled = df_cleaned[df_cleaned['Independent_var_col'].notna()]
 
+#Change our target class variables to 0 and 1 for model input
+df_labeled['Targert Col'] = df_labeled['Targert Col'].repalce([{'Var1': 0, 'Var2': 1}])
+
 
 #UNCOMMENT THE CODE BELOW IF YOU WANT TO SPILT IT INTO SEPERATE EXCEL FILES 
 # df_unlabeled.to_excel(r"INSERT NEW FILE PATH", index=False)
 # df_labeled.to_excel(r"INSERT NEW FILE PATH", index=False)
+
 
 #_______________________________________________________________________________________________
 #BELOW IS THE CODE TO USE A TFIDF METHOD TO BE USED AS MODEL INPUT
