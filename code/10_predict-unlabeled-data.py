@@ -36,7 +36,7 @@ for text, label in zip(df_unlabeled['REnter text column here'], predicted_labels
 
 #spot check some of the rows to see what we are dealing with
 for row in range (1,20):
-  print(f"Text: {df_unlabeled[row]['Text col here']}")
-  print(f"Predicted label: {df_unlabeled[row]['predicted_label']}")
+  print(f"Text: {df_unlabeled.iloc[row]['Text col here']}")
+  print(f"Predicted label: {df_unlabeled.iloc[row]['predicted_label']}")
   print("\n")
 
