@@ -21,7 +21,7 @@ train_indices = train_data.index
 test_indices = test_data.index
 
 # Export the indices as a CSV file for reuse
-indices_df = pd.DataFrame({'train_indices': train_indices, 'test_indices': test_indices})
+indices_df = pd.DataFrame({'train_indices': pd.Series(train_indices), 'test_indices': pd.Series(test_indices)})
 indices_df.to_csv('train_test_indices.csv', index=False)
 
 
