@@ -41,12 +41,6 @@ df2['Group'] = 'Group 2'
 #combined dataframes into one
 df_combined = pd.concat([df1,df2], ignore_index = True)
 
-#change any column names BELOW IS STRICTLY AN EXAMPLE USAGE IF NEEDED.  UNCOMMENT IF NEEDED
-
-# df_combined['Received Five Stars'] = df_combined['Rating']
-# df_combined = df_combined.drop('Rating', axis = 1)
-# df_combined['Received Five Stars'] = df_combined['Received Five Stars'].replace({'Five Stars': 1, 'Not Five Stars': 0})
-
 
 #______________________________________ DATA CLEANING FUCNTION _______________________________________
 
@@ -121,11 +115,11 @@ text_columns = ['text_col_name']
 df_cleaned = clean_text_dataframe(df_combined, drop_columns=drop_columns, text_columns=text_columns)
 
 
-
 # Once text has been cleaned, move on to basic text statistics to determine if you should be returning to 
 # clean text more or filter out more stop words. One important thing to note is that 
 
-#__________________________________ IF NEEDED, BASIC TEXT STATISTICS _________________________________
+
+#___________________ IF NEEDED, BASIC TEXT STATISTICS TO CREATE A CUSTOM STOP WORDS LIST ________________
 
 # Function to calculate word frequency
 def word_frequency(text, N=20):
@@ -146,10 +140,9 @@ for word in top_words:
 
 #--------------------------------------------------------------------------------------------
 
-
 #Uncomment this code if you would like to export your data as a cleaned file
 #EXPORT AS MANY VERSIONS AS NEEEDED 
         #Cleaned with the use of stop words and lemmatization
         #Cleaned without stop words / lemmatization ect.
 
-# df_cleaned.to_excel(r"new_file_path_here", index=False)
+df_cleaned.to_csv(r"new_file_path_here.csv", index=False)
