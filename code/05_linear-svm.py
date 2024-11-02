@@ -12,21 +12,20 @@ from sklearn.model_selection import cross_val_score
 
 # Define the parameter grid for Linear SVC Classifier we want to test these can be altered to best fit your needs
 
-param_grid_svc = {
+param_grid = {
     'C': [0.001, 0.01, 0.1, 1, 10],        # Expanded C values for better regularization exploration
     'loss': ['hinge', 'squared_hinge'],    # Loss functions
     'max_iter': [1000, 5000, 10000],       # Iteration limits
 }
 
 # Perform the Grid search for Linear SVM, store the best parameters
-grid_search_svc = GridSearchCV(LinearSVC(random_state= 42, class_weight ='balanced'), param_grid_svc, cv = 5, verbose =10)
-grid_search_svc.fit(X_train_vec, y_train)
+grid_search = GridSearchCV(LinearSVC(random_state= 42, class_weight ='balanced'), param_grid, cv = 5, verbose =10, scoring='precision')
 
 #store our best parameters
-best_params_svc = grid_search_svc.best_params_
+best_params = grid_search.best_params_
 
 #print the best parameters as follows:
-print("Best parameters for LinearSVC:", best_params_svc)
+print("Best parameters for LinearSVC:", best_params)
 
 
 
