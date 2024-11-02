@@ -7,11 +7,11 @@ from openpyxl import load_workbook
 #-----------------------------------------------------------------------------------------------
 
 # Load in the original data before cleaning
-original_df = pd.read_excel('INSERT ORIGINAL DATA PATH HERE')
+original_df = pd.read_csv('INSERT ORIGINAL DATA PATH HERE PRIOR TO CLEANING')
 
 # Filter rows where our DataFrame includes only specified values in the target column
 unlabeled_original_df = original_df[
-    original_df['UPDATE TO TARGET COLUMN'].isin(["UPDATE TO VALUE IN TARGET COL", "UPDATE TO VALUE IN TARGET COL"])
+    original_df['Targert_col'].isin(["Var1", "Var2"])
 ]
 
 # Drop columns that are not needed for model performance tracking if needed
@@ -19,7 +19,7 @@ unlabeled_original_df = original_df[
 drop_columns = ['COLUMN_NAME_1', 'COLUMN_NAME_2']  # Replace with actual column names to drop
 unlabeled_original_df.drop(columns=drop_columns, inplace=True)
 
-model_eval_path = 'INSERT THE EXCEL FILE HERE FOR EVALUATION.xlsx'
+model_eval_path = 'Insert the Existing file path here for our model evals.xlsx'
 
 #-----------------------------------------------------------------------------------------------
 #Load Existing or Initialize Model Performance Data
