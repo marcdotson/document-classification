@@ -46,10 +46,7 @@ def evaluate_model_then_export(
     
     # Get predicted probabilities for the positive class
     y_prob_test = model.predict_proba(X_test)[:, 1]
-    
-    # Prepare CSV file for logging results
-    csv_file = 'INSERT_YOUR_CSV_FILE_PATH_HERE.csv'
-    file_exists = os.path.isfile(csv_file)
+   
     
     # Define row data dictionary keys for CSV
     fieldnames = [
@@ -88,11 +85,18 @@ def evaluate_model_then_export(
 
         print(f"Precision at {threshold * 100:.0f}%: {precision:.2f}")
 
-    # Log to CSV file
-    with open(csv_file, mode='a', newline='') as file:
-        writer = csv.DictWriter(file, fieldnames=fieldnames)
-        if not file_exists:
-            writer.writeheader()  # Write header if file doesn't exist
-        writer.writerow(row_data)
+
+     
+    # Prepare EXCEL file for logging results
+    excel_file = 'INSERT_YOUR_EXCEL_FILE_PATH_HERE.XLSX'
+
+     # Create or append to the Excel file
+    if os.path.exists(excel_file):
+        with pd.ExcelWriter(excel_file, mode='a', engine='openpyxl') as writer:
+            df = pd.DataFrame([row_data])
+            df.to_excel(writer, sheet_name='Model Performance', index=False, header=not writer.sheets)
+    else:
+        df = pd.DataFrame([row_data])
+        df.to_excel(excel_file, sheet_name='Model Performance', index=False)
 
     print(f"Results logged for model: {str(model)}")
