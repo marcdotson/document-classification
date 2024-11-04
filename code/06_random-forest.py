@@ -15,7 +15,7 @@ param_grid = {
 }
 # Grid search for Random Forest
 grid_search = GridSearchCV(RandomForestClassifier(random_state= 42, class_weight ='balanced'), param_grid, cv = 5, verbose =1, scoring='precision')
-
+grid_search.fit(X_train, y_train)
 #store our best parameters
 best_params = grid_search.best_params_
 
