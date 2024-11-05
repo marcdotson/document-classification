@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import confusion_matrix, classification_report
 from sklearn.metrics import accuracy_score, roc_auc_score
 from sklearn.metrics import precision_score
-import csv
 import os
 
 
@@ -83,20 +82,34 @@ def evaluate_model_then_export(
         plt.title(f'Confusion Matrix - Threshold {threshold * 100:.0f}%')
         plt.show()
 
-        print(f"Precision at {threshold * 100:.0f}%: {precision:.2f}")
+
+        print(f"Precision at {threshold * 100:.0f}%: {precision:.2f}") 
+        print(f"Classification Report at {threshold * 100:.0f}%:\n")
+        print(classification_report(y_test, y_pred_custom, target_names=model.classes_))
+        print("\n" + "-"*50 + "\n")
 
 
-     
-    # Prepare EXCEL file for logging results
-    excel_file = 'INSERT_YOUR_EXCEL_FILE_PATH_HERE.XLSX'
+    # Prepare Excel file for logging results
+    excel_file = 'INSERT_YOUR_EXCEL_FILE_PATH_HERE.xlsx'
+    sheet_name = 'Model Performance'
 
-     # Create or append to the Excel file
+    # Create DataFrame with new data
+    df = pd.DataFrame([row_data])
+
+    # Check if the file exists
     if os.path.exists(excel_file):
         with pd.ExcelWriter(excel_file, mode='a', engine='openpyxl') as writer:
-            df = pd.DataFrame([row_data])
-            df.to_excel(writer, sheet_name='Model Performance', index=False, header=not writer.sheets)
+            # Load the workbook to check for sheet existence
+            book = load_workbook(excel_file)
+            writer.book = book
+
+            # Write data to a new sheet if it doesn't exist; otherwise, append
+            if sheet_name in writer.book.sheetnames:
+                df.to_excel(writer, sheet_name=sheet_name, index=False, header=False, startrow=writer.book[sheet_name].max_row)
+            else:
+                df.to_excel(writer, sheet_name=sheet_name, index=False)
     else:
-        df = pd.DataFrame([row_data])
-        df.to_excel(excel_file, sheet_name='Model Performance', index=False)
+        # Create a new Excel file and write data
+        df.to_excel(excel_file, sheet_name=sheet_name, index=False)
 
     print(f"Results logged for model: {str(model)}")
