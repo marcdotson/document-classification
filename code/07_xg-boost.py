@@ -20,7 +20,7 @@ param_grid = {
 
 #Create GridSearchCV object
 grid_search = GridSearchCV(estimator=model, param_grid=param_grid, scoring='precision',  cv=5, verbose=1)
-
+grid_search.fit(X_train, y_train)
 #Best parameters and best score
 best_params = grid_search.best_params_
 

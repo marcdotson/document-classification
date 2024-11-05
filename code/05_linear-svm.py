@@ -20,7 +20,7 @@ param_grid = {
 
 # Perform the Grid search for Linear SVM, store the best parameters
 grid_search = GridSearchCV(LinearSVC(random_state= 42, class_weight ='balanced'), param_grid, cv = 5, verbose =10, scoring='precision')
-
+grid_search.fit(X_train, y_train)
 #store our best parameters
 best_params = grid_search.best_params_
 
