@@ -33,6 +33,14 @@ y_unlabeled_prob = grid_search.predict_proba('unlabeld_text_vec OR unlabeld_text
 for text, label in zip(df_unlabeled['REnter text column here'], predicted_labels):
     df_unlabeled['predicted_label'] = predicted_labels
 
+# Get value counts
+prediction_counts = df_unlabeled['predicted_label'].value_counts()
+
+# format our value counts that will then be used later to export
+final_pred_dist = '\n'.join([f"{cls}: {count}" for cls, count in prediction_counts.items()])
+
+#print our predition distribrution
+print(f'Final prediction distributions: {prediction_counts}')
 
 #spot check some of the rows to see what we are dealing with
 for row in range (1,20):
