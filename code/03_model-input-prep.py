@@ -27,7 +27,7 @@ print(f'Class distribution: \n{df_labeled['Target_Col'].value_coutns()}')
 value_counts = df_labeled['Target_Col'].value_counts()
 
 # format our value counts that will then be used later to export
-formatted_counts = '\n'.join([f"{cls}: {count}" for cls, count in value_counts.items()])
+training_size_dist = '\n'.join([f"{cls}: {count}" for cls, count in value_counts.items()])
 
 # Change target class variables to 0 and 1 for model input assing 1 to the positive class you want
 df_labeled['Target_Col'] = df_labeled['Target_Col'].replace({'Var1': 0, 'Var2': 1})
