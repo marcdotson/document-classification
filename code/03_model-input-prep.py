@@ -54,6 +54,9 @@ X_test  = tfidf_vec.transform(X_test_raw)
 print(f'Number of vector features in training split: {X_train.shape}')
 print(f'Number of vector features in testing split: {X_test.shape}')
 
+################################################################################################
+# Consider sourcing the model and model evaluation scripts here.
+################################################################################################
 
 #_______________________________________________________________________________________________
 #BELOW IS THE CODE TO USE A BASIC COUNT VECTORIZER METHOD TO BE USED AS MODEL INPUT, USE THIS CODE BLOCK TO IMPLEMENT
@@ -70,6 +73,9 @@ X_test  = count_vec.transform(X_test_raw)
 print(f'Number of vector features in training split: {X_train.shape}')
 print(f'Number of vector features in testing split: {X_test.shape}')
 
+################################################################################################
+# Consider sourcing the model and model evaluation scripts here.
+################################################################################################
 
 #_______________________________________________________________________________________________
 #BELOW IS THE CODE TO USE WORD EMBEDDINGS AS THE INPUT INTO THE MODEL, USE THIS CODE BLOCK TO IMPLEMENT
@@ -114,4 +120,6 @@ y_train_raw_embed, y_test_raw_embed = labels.loc[train_indices], labels.loc[test
 X_train = np.array(X_train_raw_embed)
 X_test = np.array(X_test_raw_embed)
 
-
+################################################################################################
+# Consider sourcing the model and model evaluation scripts here.
+################################################################################################
