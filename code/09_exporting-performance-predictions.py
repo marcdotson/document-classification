@@ -20,7 +20,7 @@ drop_columns = ['COLUMN_NAME_1', 'COLUMN_NAME_2']
 unlabeled_trimmed_df = unlabeled_original_df.drop(columns=drop_columns)
 
 # Prepare Excel file for logging results specify the sheet name you want and file you need regardless if it exists
-model_eval_path = r'data/model_eval/model_evaluations.xlsx'
+model_eval_path = r'output/model_evaluations.xlsx'
 sheet_name_performance = 'Model Performance'
 sheet_name_predictions = 'Model Predictions'
 
