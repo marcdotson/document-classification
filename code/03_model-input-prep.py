@@ -21,7 +21,7 @@ df_cleaned = pd.read_csv(r'data/cleaned data version you need.csv')
 df_labeled = df_cleaned[df_cleaned['Target_Col'].isin(['Var1', 'Var2'])]
 
 #print and store our our class distribution
-print(f'Class distribution: \n{df_labeled['Target_Col'].value_coutns()}')
+print(f'Class distribution: \n{df_labeled['Target_Col'].value_counts()}')
 
 # Get value counts
 value_counts = df_labeled['Target_Col'].value_counts()
