@@ -8,7 +8,7 @@ import os
 #-----------------------------------------------------------------------------------------------
 
 # Load in the original data before cleaning
-original_df = pd.read_csv(r'data/original_data/INSERT ORIGINAL DATA PATH HERE PRIOR TO CLEANING.csv')
+original_df = pd.read_csv(r'data/INSERT ORIGINAL DATA PATH HERE PRIOR TO CLEANING.csv')
 
 # Filter rows where our DataFrame includes only specified values in the target column
 unlabeled_original_df = original_df[

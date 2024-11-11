@@ -15,7 +15,7 @@ train_indices = indices_df['train_indices'].dropna().astype(int).tolist()
 test_indices = indices_df['test_indices'].dropna().astype(int).tolist()
 
 # Load a cleaned/preprocessed dataset (e.g., with or without stop words)
-df_cleaned = pd.read_csv(r'data/cleaned_data/cleaned data version you need.csv')
+df_cleaned = pd.read_csv(r'data/cleaned data version you need.csv')
 
 # Filter labeled data for the specified values
 df_labeled = df_cleaned[df_cleaned['Target_Col'].isin(['Var1', 'Var2'])]
@@ -91,12 +91,12 @@ embeddings_df = pd.DataFrame(embeddings, columns = [f'embedding_{i}' for i in ra
 df_cleaned_embed = pd.concat([df_cleaned, embeddings_df], axis = 1 )
 
 #Step 5: Export the dataframe with the embeddings BE SURE TO SPECIFY THE TYPE (with or without stopwords ect.)
-df_cleaned_embed.to_csv(r'data/embeddings/INSERT NEW EMBEDDING FILE PATH NAME HERE.CSV', index = False)
+df_cleaned_embed.to_csv(r'data/INSERT NEW EMBEDDING FILE PATH NAME HERE.CSV', index = False)
 
 #----------------------------------------------------------
 
 #load in the embedings dataframe if the file exists already. Else run the steps above to create the new file. Comment this code out if not needed
-df_cleaned_embed = pd.read_csv(r'data/embeddings/INSERT RELAVENT EMBEDDINGS FILE PATH.CSV')
+df_cleaned_embed = pd.read_csv(r'data/INSERT RELAVENT EMBEDDINGS FILE PATH.CSV')
 
 #create our labeled embeddings dataframe
 df_labeled_embed = df_cleaned_embed[df_cleaned_embed['Target_Col'].isin(['Var1', 'Var2'])]

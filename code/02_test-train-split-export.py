@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 #_______________________________________________________________________________________________
 
 # Reading the csv file into a DataFrame
-df_cleaned = pd.read_csv(r'READ_CLEAN_FILE_PATH.CSV')
+df_cleaned = pd.read_csv(r'data/READ_CLEAN_FILE_PATH.CSV')
 
 # Filter labeled data for the specified values
 df_labeled = df_cleaned[df_cleaned['Target_col'].isin(['Var1', 'Var2'])]
@@ -22,6 +22,6 @@ test_indices = test_data.index
 
 # Export the indices as a CSV file for reuse
 indices_df = pd.DataFrame({'train_indices': pd.Series(train_indices), 'test_indices': pd.Series(test_indices)})
-indices_df.to_csv(r'data/train_test_split/train_test_indices.csv', index=False)
+indices_df.to_csv(r'data/train_test_indices.csv', index=False)
 
 

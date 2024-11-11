@@ -10,7 +10,7 @@ import numpy as np
 #-----------------------------------------------------------------------------------------------
 
 #Import whatever cleaned dataset you have (embeddings or no embeddings) if needed, else comment this code out
-df_cleaned = pd.read_csv(r'insert the cleaned file here.csv')
+df_cleaned = pd.read_csv(r'data/insert the cleaned file here.csv')
 
 #specify the labels that are considered the "Unlabeled data" to filter the data out
 df_unlabeled = df_cleaned[df_cleaned['Target_Col'].isin(['Var1', 'Var2'])]

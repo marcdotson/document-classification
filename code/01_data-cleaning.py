@@ -145,4 +145,4 @@ for word in top_words:
         #Cleaned with the use of stop words and lemmatization
         #Cleaned without stop words / lemmatization ect.
 
-df_cleaned.to_csv(r"data/cleaned_data/new_file_path_here.csv", index=False)
+df_cleaned.to_csv(r"data/new_file_path_here.csv", index=False)
