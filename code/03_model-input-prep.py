@@ -79,7 +79,7 @@ print(f'Number of vector features in testing split: {X_test.shape}')
 #these first 5 steps are to get the embeddings and add them to our complete cleaned dataframe, once they are run comment them out to avoid running again
 
 #Step 1: bring in model from HuggingFace
-model = SentenceTransformer("Oillim/MiniLM-L6-v2")
+model = SentenceTransformer("HUGGINGFACE MODEL NAME")
 
 #Step 2: encode model
 embeddings = model.encode(df_cleaned['text_column'])
